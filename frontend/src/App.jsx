@@ -74,29 +74,32 @@ function App() {
    * 
    * @param {string} token - JWT token to verify
    */
-  const verifyToken = async (token) => {
-    try {
-      // Send GET request to protected endpoint with stored token
-      // If token is valid, this request succeeds
-      await axios.get('/api/user', {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      
-      // Token is valid - user is authenticated
-      setIsAuthenticated(true)
-    } catch (error) {
-      // Token is invalid or expired
-      
-      // Remove invalid token from localStorage
-      localStorage.removeItem('token')
-      
-      // User is not authenticated
-      setIsAuthenticated(false)
-    } finally {
-      // Finish loading regardless of token validity
-      setLoading(false)
-    }
+  const API_URL = "https://jwtbasedlogin-qwpn2swz.b4a.run";
+
+const verifyToken = async (token) => {
+  try {
+    await axios.get(
+      `${API_URL}/api/user`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        timeout: 10000
+      }
+    );
+
+    setIsAuthenticated(true);
+
+  } catch (error) {
+    console.log("Verify Token Error:", error);
+
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+
+  } finally {
+    setLoading(false);
   }
+};
 
   // ==================== LOADING STATE ====================
 
