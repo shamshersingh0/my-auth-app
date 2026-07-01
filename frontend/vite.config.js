@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://jwtbasedlogin-otvhq54d.b4a.run',
+        target: 'https://jwtbasedlogin-qwpn2swz.b4a.run',
         changeOrigin: true,
       }
     }
