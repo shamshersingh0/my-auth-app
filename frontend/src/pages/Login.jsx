@@ -21,12 +21,18 @@ const Login = ({ setIsAuthenticated }) => {
 
     try {
       const response = await axios.post(
-        `${API_URL}/api/login`,
-        {
-          email,
-          password
-        }
-      )
+  `${API_URL}/api/login`,
+  {
+    email,
+    password
+  },
+  {
+    timeout: 10000
+  }
+)
+
+console.log("Login successful")
+console.log(response.data)
 
       const { token } = response.data
 
