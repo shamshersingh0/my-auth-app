@@ -3,11 +3,47 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth.routes');
 const userRoutes = require('./routes/user.routes');
 const healthRoutes = require('./routes/health.routes');
+const config = require('./config/env');
 
 const app = express();
 
-app.use(cors());
+// ==================== CORS CONFIGURATION ====================
+
+/**
+ * CORS Options for production
+ * Allows requests from deployed frontend
+ */
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests from frontend and localhost
+    const allowedOrigins = [
+      'https://hellojwtbasedlogin-rri327d5.b4a.run',
+      'http://localhost:3000',
+      'http://localhost:5000'
+    ];
+
+    // For development: allow all origins
+    if (process.env.NODE_ENV === 'development') {
+      return callback(null, true);
+    }
+
+    // For production: check against whitelist
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+
+// ==================== ROUTES ====================
 
 app.get('/', (req, res) => {
   res.json({ 

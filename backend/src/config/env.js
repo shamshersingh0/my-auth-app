@@ -9,4 +9,13 @@ const config = {
   FRONTEND_URL: process.env.FRONTEND_URL || 'http://localhost:3000'
 };
 
+// Log configuration on startup
+if (process.env.NODE_ENV === 'production') {
+  console.log('\n🔒 Production Mode CORS Enabled');
+  console.log(`✅ Allowed Origins:`);
+  console.log(`   - https://hellojwtbasedlogin-rri327d5.b4a.run`);
+  console.log(`   - http://localhost:3000`);
+  console.log(`   - http://localhost:5000\n`);
+}
+
 module.exports = config;
