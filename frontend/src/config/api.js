@@ -2,9 +2,12 @@
  * API Configuration
  * 
  * Centralized API endpoint configuration
+ * Uses environment variable with fallback
  */
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// Use production backend URL for deployed version
+// For local development, use: http://localhost:5000/api
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://jwtbasedlogin-s4o6o32t.b4a.run/api';
 
 const API_ENDPOINTS = {
   // Authentication endpoints
@@ -19,5 +22,7 @@ const API_ENDPOINTS = {
   // Health endpoints
   HEALTH: `${API_BASE_URL}/health`
 };
+
+console.log('🌐 API Base URL:', API_BASE_URL);
 
 export default API_ENDPOINTS;
