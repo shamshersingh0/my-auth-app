@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 // Backend URL
-const API_URL = "https://jwtbasedlogin-qwpn2swz.b4a.run"
+const API_URL = "https://jwtbasedlogin-s4o6o32t.b4a.run/"
 
 const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState('user@example.com')
