@@ -280,6 +280,12 @@ app.get('/api/health', (req, res) => {
 
 // ==================== SERVER STARTUP ====================
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "JWT Authentication API is running 🚀"
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log(`📝 JWT Secret: ${process.env.JWT_SECRET ? '✓ Set' : '✗ Not set'}`);
