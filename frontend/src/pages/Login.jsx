@@ -25,9 +25,6 @@ const Login = ({ setIsAuthenticated }) => {
   {
     email,
     password
-  },
-  {
-    timeout: 10000
   }
 )
 
