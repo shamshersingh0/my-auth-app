@@ -17,9 +17,7 @@ const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests from frontend and localhost
     const allowedOrigins = [
-      'https://hellojwtbasedlogin-rri327d5.b4a.run',
-      'http://localhost:3000',
-      'http://localhost:5000'
+      'https://hellojwtbasedlogin-lm228iuq.b4a.run/'
     ];
 
     // For development: allow all origins
