@@ -14,30 +14,18 @@ const app = express();
  * Allows requests from deployed frontend
  */
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests from frontend and localhost
-    const allowedOrigins = [
-      'https://hellojwtbasedlogin-byapr167.b4a.run//'
-    ];
-
-    // For development: allow all origins
-    if (process.env.NODE_ENV === 'development') {
-      return callback(null, true);
-    }
-
-    // For production: check against whitelist
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    'https://hellojwtbasedlogin-byapr167.b4a.run'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  optionsSuccessStatus: 200
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.json());
 
