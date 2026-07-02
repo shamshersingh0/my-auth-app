@@ -2,7 +2,7 @@
 
 ## Your Deployed URLs
 
-**Frontend:** https://hellojwtbasedlogin-rri327d5.b4a.run/
+**Frontend:** https://hellojwtbasedlogin-lm228iuq.b4a.run/
 **Backend API:** https://jwtbasedlogin-s4o6o32t.b4a.run/
 
 ---
@@ -11,7 +11,7 @@
 
 ### Root Cause
 The frontend is trying to connect to `http://localhost:5000/api` but:
-- Frontend is deployed on: `https://hellojwtbasedlogin-rri327d5.b4a.run`
+- Frontend is deployed on: `https://hellojwtbasedlogin-lm228iuq.b4a.run`
 - Backend is deployed on: `https://jwtbasedlogin-s4o6o32t.b4a.run`
 - Localhost doesn't exist in production!
 
@@ -152,7 +152,7 @@ JWT_SECRET=your_super_secret_key
 JWT_EXPIRE=1m
 NODE_ENV=production
 API_URL=https://jwtbasedlogin-s4o6o32t.b4a.run
-FRONTEND_URL=https://hellojwtbasedlogin-rri327d5.b4a.run
+FRONTEND_URL=https://hellojwtbasedlogin-lm228iuq.b4a.run
 ```
 
 ### Frontend (.env)
