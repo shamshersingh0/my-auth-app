@@ -51,10 +51,23 @@ export const logoutUser = async () => {
     
     return response.data;
   } catch (error) {
-    // Remove token even if logout fails
-    removeToken();
-    throw error.response?.data || { message: 'Logout failed' };
+  console.error("Login Error:", error);
+
+  if (error.response) {
+    console.error("Response:", error.response.data);
+    throw error.response.data;
   }
+
+  if (error.request) {
+    throw {
+      message: "Cannot connect to the server. Check CORS, backend URL, or server status."
+    };
+  }
+
+  throw {
+    message: error.message
+  };
+}
 };
 
 export default {
