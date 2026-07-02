@@ -2,8 +2,8 @@
 
 ## Your Deployed URLs
 
-**Frontend:** https://hellojwtbasedlogin-lm228iuq.b4a.run/
-**Backend API:** https://jwtbasedlogin-s4o6o32t.b4a.run/
+**Frontend:** https://hellojwtbasedlogin-byapr167.b4a.run//
+**Backend API:** https://jwtbasedlogin-3mwtfalw.b4a.run//
 
 ---
 
@@ -11,8 +11,8 @@
 
 ### Root Cause
 The frontend is trying to connect to `http://localhost:5000/api` but:
-- Frontend is deployed on: `https://hellojwtbasedlogin-lm228iuq.b4a.run`
-- Backend is deployed on: `https://jwtbasedlogin-s4o6o32t.b4a.run`
+- Frontend is deployed on: `https://hellojwtbasedlogin-byapr167.b4a.run/`
+- Backend is deployed on: `https://jwtbasedlogin-3mwtfalw.b4a.run/`
 - Localhost doesn't exist in production!
 
 ---
@@ -24,7 +24,7 @@ The frontend is trying to connect to `http://localhost:5000/api` but:
 Create/Update `frontend/.env` file with:
 
 ```bash
-REACT_APP_API_URL=https://jwtbasedlogin-s4o6o32t.b4a.run/api
+REACT_APP_API_URL=https://jwtbasedlogin-3mwtfalw.b4a.run//api
 ```
 
 ### Step 2: Update API Configuration
@@ -32,7 +32,7 @@ REACT_APP_API_URL=https://jwtbasedlogin-s4o6o32t.b4a.run/api
 Update `frontend/src/config/api.js`:
 
 ```javascript
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://jwtbasedlogin-s4o6o32t.b4a.run/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://jwtbasedlogin-3mwtfalw.b4a.run//api';
 ```
 
 ### Step 3: Ensure CORS is Enabled on Backend
@@ -79,7 +79,7 @@ npm run dev
 ### Test Backend is Working
 
 ```bash
-curl https://jwtbasedlogin-s4o6o32t.b4a.run/api/health
+curl https://jwtbasedlogin-3mwtfalw.b4a.run//api/health
 ```
 
 Expected response:
@@ -93,7 +93,7 @@ Expected response:
 ### Test Login Endpoint
 
 ```bash
-curl -X POST https://jwtbasedlogin-s4o6o32t.b4a.run/api/auth/login \
+curl -X POST https://jwtbasedlogin-3mwtfalw.b4a.run//api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com","password":"password123"}'
 ```
@@ -123,7 +123,7 @@ Expected response:
 
 **Fix:**
 1. Check `REACT_APP_API_URL` environment variable
-2. Verify backend URL is correct: `https://jwtbasedlogin-s4o6o32t.b4a.run`
+2. Verify backend URL is correct: `https://jwtbasedlogin-3mwtfalw.b4a.run/`
 3. Rebuild frontend after changing .env
 
 ### Problem 2: CORS Error
@@ -151,13 +151,13 @@ PORT=5000
 JWT_SECRET=your_super_secret_key
 JWT_EXPIRE=1m
 NODE_ENV=production
-API_URL=https://jwtbasedlogin-s4o6o32t.b4a.run
-FRONTEND_URL=https://hellojwtbasedlogin-lm228iuq.b4a.run
+API_URL=https://jwtbasedlogin-3mwtfalw.b4a.run/
+FRONTEND_URL=https://hellojwtbasedlogin-byapr167.b4a.run/
 ```
 
 ### Frontend (.env)
 ```bash
-REACT_APP_API_URL=https://jwtbasedlogin-s4o6o32t.b4a.run/api
+REACT_APP_API_URL=https://jwtbasedlogin-3mwtfalw.b4a.run//api
 REACT_APP_ENV=production
 ```
 
@@ -222,7 +222,7 @@ npm run build
 
 ### Test Backend Health
 ```bash
-curl -s https://jwtbasedlogin-s4o6o32t.b4a.run/api/health | jq .
+curl -s https://jwtbasedlogin-3mwtfalw.b4a.run//api/health | jq .
 ```
 
 ---

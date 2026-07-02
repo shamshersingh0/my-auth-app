@@ -13,7 +13,7 @@ const config = {
 if (process.env.NODE_ENV === 'production') {
   console.log('\n🔒 Production Mode CORS Enabled');
   console.log(`✅ Allowed Origins:`);
-  console.log(`   - https://hellojwtbasedlogin-lm228iuq.b4a.run`);
+  console.log(`   - https://hellojwtbasedlogin-byapr167.b4a.run/`);
   console.log(`   - http://localhost:3000`);
   console.log(`   - http://localhost:5000\n`);
 }
